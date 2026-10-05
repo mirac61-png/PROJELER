@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f7f8fc">
+    <meta name="description" content="Yapay zeka, bilim, oyun ve dijital dünyadan güncel teknoloji yazıları.">
+    <title>TeknoGündem | Teknoloji Blogu</title>
+    <style>
+        :root {
+            font-family: "Segoe UI", Arial, sans-serif;
+            color: #182033;
+            background: #f7f8fc;
+            font-synthesis: none;
+            text-rendering: optimizeLegibility;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .container {
+            width: min(1120px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .topbar {
+            border-bottom: 1px solid #e8eaf1;
+            background: rgba(255, 255, 255, 0.88);
+        }
+
+        .nav {
+            display: flex;
+            min-height: 72px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand {
+            color: #5b55d9;
+            font-size: 1.35rem;
+            font-weight: 850;
+            letter-spacing: -0.05em;
+            text-decoration: none;
+        }
+
+        .brand span {
+            color: #182033;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 22px;
+        }
+
+        .nav-links a {
+            color: #596176;
+            font-size: 0.92rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            color: #5b55d9;
+        }
+
+        .hero {
+            display: grid;
+            min-height: 370px;
+            align-items: center;
+            margin-top: 32px;
+            padding: clamp(30px, 6vw, 66px);
+            overflow: hidden;
+            border-radius: 26px;
+            background:
+                radial-gradient(circle at 82% 25%, rgba(164, 153, 255, 0.5), transparent 25%),
+                radial-gradient(circle at 88% 90%, rgba(76, 203, 217, 0.32), transparent 30%),
+                linear-gradient(125deg, #171d3d, #34317a 62%, #5044a9);
+            color: #fff;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .eyebrow {
+            margin: 0 0 16px;
+            color: #c8c3ff;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            max-width: 620px;
+            margin: 0;
+            font-size: clamp(2.35rem, 6vw, 4.3rem);
+            letter-spacing: -0.055em;
+            line-height: 1.04;
+        }
+
+        .hero p:not(.eyebrow) {
+            max-width: 560px;
+            margin: 20px 0 26px;
+            color: #e1e1f4;
+            font-size: 1.08rem;
+            line-height: 1.7;
+        }
+
+        .button {
+            display: inline-flex;
+            min-height: 46px;
+            align-items: center;
+            justify-content: center;
+            padding: 0 19px;
+            border-radius: 10px;
+            background: #fff;
+            color: #37317d;
+            font-weight: 750;
+            text-decoration: none;
+        }
+
+        .button:hover,
+        .button:focus-visible {
+            background: #e9e7ff;
+        }
+
+        .section {
+            padding: 54px 0 12px;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 22px;
+        }
+
+        .section-heading h2 {
+            margin: 0;
+            font-size: clamp(1.6rem, 4vw, 2rem);
+            letter-spacing: -0.04em;
+        }
+
+        .section-heading p {
+            margin: 8px 0 0;
+            color: #737b8f;
+        }
+
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-bottom: 22px;
+        }
+
+        .filter-button {
+            padding: 9px 14px;
+            border: 1px solid #e1e4ed;
+            border-radius: 999px;
+            background: #fff;
+            color: #596176;
+            cursor: pointer;
+            font: inherit;
+            font-size: 0.88rem;
+            font-weight: 650;
+        }
+
+        .filter-button:hover,
+        .filter-button[aria-pressed="true"] {
+            border-color: #5b55d9;
+            background: #eeedff;
+            color: #4942c0;
+        }
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .article-card {
+            display: flex;
+            min-height: 272px;
+            flex-direction: column;
+            padding: 22px;
+            border: 1px solid #e9ebf2;
+            border-radius: 17px;
+            background: #fff;
+            box-shadow: 0 8px 24px rgba(31, 40, 70, 0.035);
+        }
+
+        .article-card[hidden] {
+            display: none;
+        }
+
+        .article-icon {
+            display: grid;
+            width: 46px;
+            height: 46px;
+            place-items: center;
+            margin-bottom: 20px;
+            border-radius: 13px;
+            background: #f0efff;
+            font-size: 1.4rem;
+        }
+
+        .article-card[data-category="Bilim"] .article-icon {
+            background: #eaf8f6;
+        }
+
+        .article-card[data-category="Oyun"] .article-icon {
+            background: #fff2e8;
+        }
+
+        .article-card[data-category="Dijital Yaşam"] .article-icon {
+            background: #edf4ff;
+        }
+
+        .category {
+            margin: 0 0 8px;
+            color: #5b55d9;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .article-card h3 {
+            margin: 0;
+            font-size: 1.15rem;
+            letter-spacing: -0.025em;
+            line-height: 1.4;
+        }
+
+        .article-card .summary {
+            margin: 10px 0 18px;
+            color: #697286;
+            line-height: 1.65;
+        }
+
+        .article-meta {
+            margin-top: auto;
+            color: #8991a2;
+            font-size: 0.82rem;
+        }
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            margin: 54px 0;
+            padding: clamp(24px, 4vw, 38px);
+            border: 1px solid #e9ebf2;
+            border-radius: 18px;
+            background: #fff;
+        }
+
+        .about h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            letter-spacing: -0.04em;
+        }
+
+        .about p {
+            margin: 0;
+            color: #697286;
+            line-height: 1.75;
+        }
+
+        footer {
+            padding: 22px 0 30px;
+            border-top: 1px solid #e8eaf1;
+            color: #858da0;
+            font-size: 0.88rem;
+            text-align: center;
+        }
+
+        @media (max-width: 760px) {
+            .article-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 560px) {
+            .container {
+                width: min(100% - 28px, 1120px);
+            }
+
+            .nav {
+                min-height: 64px;
+                flex-wrap: wrap;
+                padding: 14px 0;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 0.84rem;
+            }
+
+            .hero {
+                min-height: 340px;
+                margin-top: 18px;
+                border-radius: 19px;
+            }
+
+            .article-grid,
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .section-heading {
+                align-items: start;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <div class="container nav">
+            <a class="brand" href="#ana-sayfa">Tekno<span>Gündem</span></a>
+            <nav class="nav-links" aria-label="Ana menü">
+                <a href="#yazilar">Yazılar</a>
+                <a href="#hakkinda">Hakkında</a>
+                <a href="../">Proje ana sayfası</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" id="ana-sayfa">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <p class="eyebrow">Merak edenler için teknoloji</p>
+                <h1 id="hero-title">Dijital dünyanın nabzını tut.</h1>
+                <p>Yapay zekadan uzay araştırmalarına, her gün kullandığımız teknolojilerin arkasındaki fikirleri keşfet.</p>
+                <a class="button" href="#yazilar">Yazıları keşfet &darr;</a>
+            </div>
+        </section>
+
+        <section class="section" id="yazilar" aria-labelledby="articles-title">
+            <div class="section-heading">
+                <div>
+                    <h2 id="articles-title">Öne çıkan yazılar</h2>
+                    <p>Teknoloji dünyasından seçtiklerimiz.</p>
+                </div>
+            </div>
+
+            <div class="filters" aria-label="Yazıları kategoriye göre filtrele">
+                <button class="filter-button" type="button" data-filter="Tümü" aria-pressed="true">Tümü</button>
+                <button class="filter-button" type="button" data-filter="Yapay Zeka" aria-pressed="false">Yapay Zeka</button>
+                <button class="filter-button" type="button" data-filter="Bilim" aria-pressed="false">Bilim</button>
+                <button class="filter-button" type="button" data-filter="Oyun" aria-pressed="false">Oyun</button>
+                <button class="filter-button" type="button" data-filter="Dijital Yaşam" aria-pressed="false">Dijital Yaşam</button>
+            </div>
+
+            <div class="article-grid">
+                <article class="article-card" data-category="Yapay Zeka">
+                    <div class="article-icon" aria-hidden="true">✨</div>
+                    <p class="category">Yapay Zeka</p>
+                    <h3>Yapay zeka günlük hayatımızı nasıl değiştiriyor?</h3>
+                    <p class="summary">Akıllı asistanlardan öneri sistemlerine: fark etmeden kullandığımız yapay zeka araçlarına kısa bir bakış.</p>
+                    <p class="article-meta">6 dakika okuma · Teknoloji</p>
+                </article>
+
+                <article class="article-card" data-category="Bilim">
+                    <div class="article-icon" aria-hidden="true">🚀</div>
+                    <p class="category">Bilim</p>
+                    <h3>Uzay araştırmalarında yeni bir dönem</h3>
+                    <p class="summary">Yeni nesil teleskoplar ve robotik görevler, evren hakkındaki sorularımıza nasıl yanıt arıyor?</p>
+                    <p class="article-meta">5 dakika okuma · Uzay</p>
+                </article>
+
+                <article class="article-card" data-category="Dijital Yaşam">
+                    <div class="article-icon" aria-hidden="true">🔐</div>
+                    <p class="category">Dijital Yaşam</p>
+                    <h3>İnternette güvenli kalmak için 5 basit adım</h3>
+                    <p class="summary">Güçlü parolalar, iki aşamalı doğrulama ve dikkatli paylaşım ile dijital hesaplarını koru.</p>
+                    <p class="article-meta">4 dakika okuma · Güvenlik</p>
+                </article>
+
+                <article class="article-card" data-category="Oyun">
+                    <div class="article-icon" aria-hidden="true">🎮</div>
+                    <p class="category">Oyun</p>
+                    <h3>Oyun dünyasında grafik teknolojileri</h3>
+                    <p class="summary">Işın izleme ve gelişmiş grafik kartları, oyunlardaki sanal dünyaları nasıl daha gerçekçi kılıyor?</p>
+                    <p class="article-meta">7 dakika okuma · Oyun</p>
+                </article>
+
+                <article class="article-card" data-category="Yapay Zeka">
+                    <div class="article-icon" aria-hidden="true">🤖</div>
+                    <p class="category">Yapay Zeka</p>
+                    <h3>Robotlar geleceğin mesleklerini nasıl etkileyecek?</h3>
+                    <p class="summary">Otomasyon bazı işleri dönüştürürken yeni becerilere ve mesleklere de kapı aralıyor.</p>
+                    <p class="article-meta">6 dakika okuma · Gelecek</p>
+                </article>
+
+                <article class="article-card" data-category="Bilim">
+                    <div class="article-icon" aria-hidden="true">🌱</div>
+                    <p class="category">Bilim</p>
+                    <h3>Daha temiz bir gelecek için yeşil teknoloji</h3>
+                    <p class="summary">Yenilenebilir enerji ve akıllı şehir çözümleri, kaynakları daha verimli kullanmamıza yardımcı oluyor.</p>
+                    <p class="article-meta">5 dakika okuma · Çevre</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="about" id="hakkinda" aria-labelledby="about-title">
+            <h2 id="about-title">Teknoloji, herkes için anlaşılır.</h2>
+            <p>TeknoGündem; teknoloji, bilim ve dijital yaşam konularını sade bir dille anlatmak için hazırlandı. Amacımız merak uyandırmak, yeni fikirler keşfetmek ve hızla değişen dünyayı birlikte takip etmek.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">© 2026 TeknoGündem · Merakla keşfet.</div>
+    </footer>
+
+    <script>
+        const filterButtons = document.querySelectorAll(".filter-button");
+        const articles = document.querySelectorAll(".article-card");
+
+        filterButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const selectedCategory = button.dataset.filter;
+
+                filterButtons.forEach((filterButton) => {
+                    filterButton.setAttribute("aria-pressed", String(filterButton === button));
+                });
+
+                articles.forEach((article) => {
+                    article.hidden = selectedCategory !== "Tümü" && article.dataset.category !== selectedCategory;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

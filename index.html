@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0d12">
+    <meta name="description" content="Ozerleras'ın web tasarım, uzay, şehir ve oyun projelerini keşfedin.">
+    <title>Ozerleras — Proje Arşivi</title>
+    <style>
+        :root {
+            color-scheme: dark;
+            font-family: "Segoe UI", Arial, sans-serif;
+            color: #f4f1e9;
+            background: #0b0d12;
+            font-synthesis: none;
+            text-rendering: optimizeLegibility;
+            --muted: #92949e;
+            --line: rgba(255, 255, 255, 0.1);
+            --lime: #d8ff68;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-width: 320px;
+            margin: 0;
+            background:
+                radial-gradient(ellipse at 82% 12%, rgba(92, 87, 59, 0.15), transparent 32rem),
+                radial-gradient(ellipse at 6% 55%, rgba(40, 62, 58, 0.12), transparent 35rem),
+                #0b0d12;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .container {
+            width: min(1160px, calc(100% - 48px));
+            margin: 0 auto;
+        }
+
+        .topbar {
+            border-bottom: 1px solid var(--line);
+        }
+
+        .navigation {
+            display: flex;
+            min-height: 78px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.96rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            text-decoration: none;
+        }
+
+        .brand-mark {
+            display: grid;
+            width: 32px;
+            height: 32px;
+            place-items: center;
+            border: 1px solid rgba(216, 255, 104, 0.55);
+            border-radius: 10px;
+            color: var(--lime);
+            font-size: 0.9rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: #b7b7bd;
+            font-size: 0.87rem;
+            text-decoration: none;
+            transition: color 160ms ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            color: var(--lime);
+        }
+
+        .nav-links .nav-cta {
+            padding: 10px 15px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            color: #f4f1e9;
+        }
+
+        .hero {
+            display: grid;
+            min-height: 470px;
+            grid-template-columns: minmax(0, 1.2fr) minmax(250px, 0.8fr);
+            align-items: center;
+            gap: 60px;
+            padding: 72px 0 65px;
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 0 20px;
+            color: var(--lime);
+            font-size: 0.73rem;
+            font-weight: 800;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            width: 25px;
+            height: 1px;
+            background: currentColor;
+            content: "";
+        }
+
+        h1 {
+            max-width: 720px;
+            margin: 0;
+            font-size: clamp(3.15rem, 8vw, 6.5rem);
+            font-weight: 750;
+            letter-spacing: -0.075em;
+            line-height: 0.98;
+        }
+
+        h1 span {
+            color: var(--lime);
+        }
+
+        .hero-copy {
+            max-width: 510px;
+            margin: 24px 0 28px;
+            color: #a4a4ad;
+            font-size: 1.02rem;
+            line-height: 1.75;
+        }
+
+        .primary-link {
+            display: inline-flex;
+            min-height: 48px;
+            align-items: center;
+            gap: 18px;
+            padding: 0 18px;
+            border-radius: 8px;
+            background: var(--lime);
+            color: #161910;
+            font-size: 0.89rem;
+            font-weight: 800;
+            text-decoration: none;
+            transition: transform 160ms ease, background 160ms ease;
+        }
+
+        .primary-link:hover,
+        .primary-link:focus-visible {
+            transform: translateY(-2px);
+            background: #e5ff9c;
+        }
+
+        .hero-art {
+            position: relative;
+            display: grid;
+            min-height: 310px;
+            place-items: center;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            background:
+                linear-gradient(135deg, rgba(255, 255, 255, 0.055), transparent 60%),
+                #11141b;
+        }
+
+        .hero-art::before,
+        .hero-art::after {
+            position: absolute;
+            border: 1px solid rgba(216, 255, 104, 0.22);
+            border-radius: 50%;
+            content: "";
+        }
+
+        .hero-art::before {
+            width: 230px;
+            height: 230px;
+        }
+
+        .hero-art::after {
+            width: 165px;
+            height: 165px;
+        }
+
+        .orb {
+            z-index: 1;
+            display: grid;
+            width: 100px;
+            height: 100px;
+            place-items: center;
+            border-radius: 28px;
+            background: linear-gradient(145deg, #e8ff9a, #b8e64e);
+            box-shadow: 0 0 80px rgba(216, 255, 104, 0.22);
+            color: #171a10;
+            font-size: 2.8rem;
+            transform: rotate(-12deg);
+        }
+
+        .art-label {
+            position: absolute;
+            right: 18px;
+            bottom: 18px;
+            left: 18px;
+            display: flex;
+            justify-content: space-between;
+            color: #999ba3;
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .art-label span:last-child {
+            color: var(--lime);
+        }
+
+        .projects-section {
+            padding: 20px 0 82px;
+            scroll-margin-top: 20px;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .section-heading .eyebrow {
+            margin-bottom: 12px;
+        }
+
+        .section-heading h2 {
+            margin: 0;
+            font-size: clamp(1.8rem, 4vw, 2.7rem);
+            letter-spacing: -0.055em;
+        }
+
+        .project-count {
+            color: var(--muted);
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            white-space: nowrap;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 15px;
+        }
+
+        .project-card {
+            --accent: #d8ff68;
+            position: relative;
+            display: flex;
+            min-height: 255px;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            padding: 22px;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background:
+                radial-gradient(ellipse at 100% 0, color-mix(in srgb, var(--accent) 12%, transparent), transparent 55%),
+                #11141b;
+            text-decoration: none;
+            transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+        }
+
+        .project-card:hover,
+        .project-card:focus-visible {
+            transform: translateY(-4px);
+            border-color: color-mix(in srgb, var(--accent) 65%, transparent);
+            outline: none;
+        }
+
+        .project-card:nth-child(2) {
+            --accent: #ff805d;
+        }
+
+        .project-card:nth-child(3) {
+            --accent: #a69aff;
+        }
+
+        .project-card:nth-child(4) {
+            --accent: #ffcd67;
+        }
+
+        .project-card:nth-child(5) {
+            --accent: #6be0cb;
+        }
+
+        .project-card:nth-child(6) {
+            --accent: #79b7ff;
+        }
+
+        .card-top,
+        .card-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .project-number {
+            color: #81838c;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+        }
+
+        .project-icon {
+            display: grid;
+            width: 42px;
+            height: 42px;
+            place-items: center;
+            border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+            border-radius: 12px;
+            background: color-mix(in srgb, var(--accent) 9%, transparent);
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .project-card h3 {
+            margin: 27px 0 8px;
+            font-size: 1.27rem;
+            letter-spacing: -0.035em;
+        }
+
+        .project-card p {
+            max-width: 290px;
+            margin: 0;
+            color: #9b9da6;
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+
+        .card-bottom {
+            margin-top: 24px;
+        }
+
+        .folder-name {
+            color: #777a84;
+            font-size: 0.73rem;
+            letter-spacing: 0.06em;
+        }
+
+        .arrow {
+            display: grid;
+            width: 34px;
+            height: 34px;
+            place-items: center;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            color: var(--accent);
+            font-size: 1rem;
+            transition: background 160ms ease, color 160ms ease;
+        }
+
+        .project-card:hover .arrow,
+        .project-card:focus-visible .arrow {
+            background: var(--accent);
+            color: #11141b;
+        }
+
+        .site-footer {
+            border-top: 1px solid var(--line);
+        }
+
+        .footer-content {
+            display: flex;
+            min-height: 76px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            color: #777a84;
+            font-size: 0.8rem;
+        }
+
+        .footer-content a {
+            color: #aeb0b8;
+            text-decoration: none;
+        }
+
+        .footer-content a:hover,
+        .footer-content a:focus-visible {
+            color: var(--lime);
+        }
+
+        @media (max-width: 850px) {
+            .hero {
+                grid-template-columns: minmax(0, 1fr) minmax(210px, 0.7fr);
+                gap: 30px;
+            }
+
+            .hero-art {
+                min-height: 260px;
+            }
+
+            .project-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: min(100% - 32px, 1160px);
+            }
+
+            .navigation {
+                min-height: 68px;
+            }
+
+            .nav-links {
+                gap: 14px;
+            }
+
+            .nav-links a {
+                font-size: 0.78rem;
+            }
+
+            .nav-links a:first-child {
+                display: none;
+            }
+
+            .nav-links .nav-cta {
+                padding: 8px 11px;
+            }
+
+            .hero {
+                min-height: 0;
+                grid-template-columns: 1fr;
+                gap: 34px;
+                padding: 64px 0 48px;
+            }
+
+            h1 {
+                font-size: clamp(3.2rem, 15vw, 5.4rem);
+            }
+
+            .hero-art {
+                min-height: 235px;
+            }
+
+            .projects-section {
+                padding-bottom: 58px;
+            }
+        }
+
+        @media (max-width: 430px) {
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card {
+                min-height: 220px;
+            }
+
+            .section-heading {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .footer-content {
+                align-items: flex-start;
+                flex-direction: column;
+                justify-content: center;
+                gap: 8px;
+                padding: 17px 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <div class="container navigation">
+            <a class="brand" href="#" aria-label="Ozerleras ana sayfa">
+                <span class="brand-mark" aria-hidden="true">O.</span>
+                <span>OZERLERAS <span style="color: #858791;">/ WEB LAB</span></span>
+            </a>
+            <nav class="nav-links" aria-label="Ana menü">
+                <a href="#projeler">Projeler</a>
+                <a href="#hakkinda">Hakkında</a>
+                <a class="nav-cta" href="#projeler">Keşfet <span aria-hidden="true">↘</span></a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="container hero" id="hakkinda">
+            <div>
+                <p class="eyebrow">Dijital çalışma alanı</p>
+                <h1>Fikirler<br>burada <span>hayat</span><br>buluyor.</h1>
+                <p class="hero-copy">Web tasarım çalışmalarımı, deneysel fikirlerimi ve küçük dijital dünyalarımı tek bir yerde keşfet.</p>
+                <a class="primary-link" href="#projeler">Projeleri keşfet <span aria-hidden="true">↘</span></a>
+            </div>
+            <div class="hero-art" aria-label="Yaratıcılığı simgeleyen soyut tasarım">
+                <div class="orb" aria-hidden="true">✳</div>
+                <div class="art-label">
+                    <span>Merakla tasarlandı</span>
+                    <span>01 — 06</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="container projects-section" id="projeler" aria-labelledby="projects-title">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Seçili çalışmalar</p>
+                    <h2 id="projects-title">Projeler arşivi</h2>
+                </div>
+                <span class="project-count">01 — 06 &nbsp; / &nbsp; 6 PROJE</span>
+            </div>
+
+            <nav class="project-grid" aria-label="Projeler">
+                <a class="project-card" href="proje1/">
+                    <span class="card-top">
+                        <span class="project-number">01 / WEB</span>
+                        <span class="project-icon" aria-hidden="true">✦</span>
+                    </span>
+                    <span>
+                        <h3>Teknoloji Blogu</h3>
+                        <p>Yapay zeka, bilim ve dijital yaşam üzerine güncel notlar.</p>
+                    </span>
+                    <span class="card-bottom">
+                        <span class="folder-name">PROJE 1</span>
+                        <span class="arrow" aria-hidden="true">↗</span>
+                    </span>
+                </a>
+
+                <a class="project-card" href="proje2/">
+                    <span class="card-top">
+                        <span class="project-number">02 / UZAY</span>
+                        <span class="project-icon" aria-hidden="true">◉</span>
+                    </span>
+                    <span>
+                        <h3>Mars Projesi</h3>
+                        <p>Kızıl gezegeni, görevleri ve keşif heyecanını yakından tanı.</p>
+                    </span>
+                    <span class="card-bottom">
+                        <span class="folder-name">PROJE 2</span>
+                        <span class="arrow" aria-hidden="true">↗</span>
+                    </span>
+                </a>
+
+                <a class="project-card" href="proje3/">
+                    <span class="card-top">
+                        <span class="project-number">03 / KEŞİF</span>
+                        <span class="project-icon" aria-hidden="true">✧</span>
+                    </span>
+                    <span>
+                        <h3>Cosmic Tours</h3>
+                        <p>Güneş sisteminde sıra dışı bir uzay yolculuğuna çık.</p>
+                    </span>
+                    <span class="card-bottom">
+                        <span class="folder-name">PROJE 3</span>
+                        <span class="arrow" aria-hidden="true">↗</span>
+                    </span>
+                </a>
+
+                <a class="project-card" href="proje4/">
+                    <span class="card-top">
+                        <span class="project-number">04 / HİKÂYE</span>
+                        <span class="project-icon" aria-hidden="true">✶</span>
+                    </span>
+                    <span>
+                        <h3>Kahraman Akademisi</h3>
+                        <p>Cesaret, dayanışma ve özgün güçlerle dolu bir akademi.</p>
+                    </span>
+                    <span class="card-bottom">
+                        <span class="folder-name">PROJE 4</span>
+                        <span class="arrow" aria-hidden="true">↗</span>
+                    </span>
+                </a>
+
+                <a class="project-card" href="proje5/">
+                    <span class="card-top">
+                        <span class="project-number">05 / ŞEHİR</span>
+                        <span class="project-icon" aria-hidden="true">⌂</span>
+                    </span>
+                    <span>
+                        <h3>Şehir Tanıtımı</h3>
+                        <p>İstanbul'un tarihi dokusunu ve eşsiz güzelliklerini keşfet.</p>
+                    </span>
+                    <span class="card-bottom">
+                        <span class="folder-name">PROJE 5</span>
+                        <span class="arrow" aria-hidden="true">↗</span>
+                    </span>
+                </a>
+
+                <a class="project-card" href="proje6/">
+                    <span class="card-top">
+                        <span class="project-number">06 / OYUN</span>
+                        <span class="project-icon" aria-hidden="true">⌁</span>
+                    </span>
+                    <span>
+                        <h3>Mini Oyunlar</h3>
+                        <p>Kısa bir mola ver; üç küçük oyunda becerini dene.</p>
+                    </span>
+                    <span class="card-bottom">
+                        <span class="folder-name">PROJE 6</span>
+                        <span class="arrow" aria-hidden="true">↗</span>
+                    </span>
+                </a>
+            </nav>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <span>© 2026 Ozerleras · Tüm projeler tek bir yerde.</span>
+            <a href="#hakkinda">Yukarı dön ↑</a>
+        </div>
+    </footer>
+</body>
+</html>

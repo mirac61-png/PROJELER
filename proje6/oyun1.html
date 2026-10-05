@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taş Kağıt Makas</title>
+    <style>
+        body {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .game-card {
+            background-color: #34495e;
+            border: 2px solid #1abc9c;
+            border-radius: 15px;
+            padding: 30px;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        h1 { color: #1abc9c; margin-top: 0; }
+        .buttons button {
+            background-color: #e67e22;
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            font-size: 1rem;
+            margin: 5px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .buttons button:hover { background-color: #d35400; }
+        #result { margin-top: 20px; font-weight: bold; font-size: 1.1rem; }
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            color: #1abc9c;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="game-card">
+    <h1>Taş - Kağıt - Makas</h1>
+    <p>Seçimini yap:</p>
+    <div class="buttons">
+        <button onclick="play('Taş')">✊ Taş</button>
+        <button onclick="play('Kağıt')">✋ Kağıt</button>
+        <button onclick="play('Makas')">✌️ Makas</button>
+    </div>
+    <div id="result">Hamleni bekle...</div>
+    <a href="index.html" class="back-btn">← Oyunlara Dön</a>
+</div>
+
+<script>
+    function play(userChoice) {
+        const choices = ['Taş', 'Kağıt', 'Makas'];
+        const computerChoice = choices[Math.floor(Math.random() * 3)];
+        let resultText = "";
+
+        if (userChoice === computerChoice) {
+            resultText = "Berabere! İki taraf da " + userChoice + " seçti.";
+        } else if (
+            (userChoice === 'Taş' && computerChoice === 'Makas') ||
+            (userChoice === 'Kağıt' && computerChoice === 'Taş') ||
+            (userChoice === 'Makas' && computerChoice === 'Kağıt')
+        ) {
+            resultText = "KAZANDIN! 🎉 <br> Sen: " + userChoice + " - Bilgisayar: " + computerChoice;
+        } else {
+            resultText = "KAYBETTİN! 😞 <br> Sen: " + userChoice + " - Bilgisayar: " + computerChoice;
+        }
+
+        document.getElementById('result').innerHTML = resultText;
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,176 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #160d0b;
+    color: white;
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(135deg, #7b241c, #c0392b);
+    text-align: center;
+    padding: 50px 20px;
+}
+
+header h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 19px;
+}
+
+nav {
+    background-color: #241412;
+    text-align: center;
+    padding: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ff6b4a;
+}
+
+main {
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+.hero {
+    text-align: center;
+    background-color: #2b1713;
+    padding: 50px 25px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+}
+
+.hero h2,
+.bilgi h2,
+.galeri h2,
+.form-alani h2 {
+    color: #ff6b4a;
+    margin-bottom: 20px;
+}
+
+.kartlar {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.kart {
+    background-color: #2b1713;
+    padding: 25px;
+    border-radius: 12px;
+    flex: 1;
+}
+
+.kart h3 {
+    color: #ff8a70;
+    margin-bottom: 10px;
+}
+
+.resimler {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.resim-karti {
+    background-color: #2b1713;
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    width: 45%;
+}
+
+.resim-karti img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.resim-karti h3 {
+    margin-top: 10px;
+    color: #ff8a70;
+}
+
+.form-alani {
+    max-width: 650px;
+    margin: auto;
+    background-color: #2b1713;
+    padding: 35px;
+    border-radius: 15px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input,
+textarea {
+    padding: 12px;
+    border: none;
+    border-radius: 7px;
+    font-size: 16px;
+}
+
+button {
+    margin-top: 25px;
+    padding: 14px;
+    border: none;
+    border-radius: 7px;
+    background-color: #c0392b;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e74c3c;
+}
+
+footer {
+    text-align: center;
+    background-color: #241412;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+@media (max-width: 700px) {
+    .kartlar {
+        flex-direction: column;
+    }
+
+    .resim-karti {
+        width: 100%;
+    }
+
+    nav a {
+        display: block;
+        margin: 8px;
+    }
+}

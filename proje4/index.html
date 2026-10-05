@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111827">
+    <meta name="description" content="Cesaret, ekip çalışması ve sorumluluk: Kahraman Akademisi'ni keşfet.">
+    <title>Kahraman Akademisi | Gücünü İyilik İçin Kullan</title>
+    <style>
+        :root {
+            font-family: "Segoe UI", Arial, sans-serif;
+            color: #f4f6fb;
+            background: #111827;
+            font-synthesis: none;
+            text-rendering: optimizeLegibility;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background:
+                radial-gradient(ellipse at 75% 5%, rgba(91, 68, 169, 0.23), transparent 34rem),
+                #111827;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .container {
+            width: min(1100px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .site-header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+            background: rgba(17, 24, 39, 0.82);
+        }
+
+        .nav {
+            display: flex;
+            min-height: 74px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            font-size: 1.12rem;
+            font-weight: 850;
+            letter-spacing: 0.02em;
+            text-decoration: none;
+        }
+
+        .brand-mark {
+            display: inline-grid;
+            width: 34px;
+            height: 34px;
+            place-items: center;
+            margin-right: 8px;
+            border-radius: 10px;
+            background: #f2b84b;
+            color: #182033;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 22px;
+        }
+
+        .nav-links a {
+            color: #c5cbd8;
+            font-size: 0.92rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            color: #f2b84b;
+        }
+
+        .hero {
+            display: grid;
+            min-height: 430px;
+            align-items: center;
+            padding: 64px 0;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .eyebrow {
+            margin: 0 0 15px;
+            color: #f2b84b;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(2.8rem, 8vw, 5.6rem);
+            letter-spacing: -0.065em;
+            line-height: 0.98;
+        }
+
+        .hero-copy {
+            max-width: 590px;
+            margin: 22px 0 28px;
+            color: #c3cada;
+            font-size: 1.08rem;
+            line-height: 1.75;
+        }
+
+        .button {
+            display: inline-flex;
+            min-height: 48px;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+            border-radius: 10px;
+            background: #f2b84b;
+            color: #182033;
+            font-weight: 800;
+            text-decoration: none;
+            transition: transform 160ms ease, background 160ms ease;
+        }
+
+        .button:hover,
+        .button:focus-visible {
+            transform: translateY(-2px);
+            background: #ffd071;
+        }
+
+        .section {
+            padding: 44px 0;
+        }
+
+        .section-heading {
+            margin-bottom: 24px;
+        }
+
+        .section-heading h2 {
+            margin: 0;
+            font-size: clamp(1.8rem, 4vw, 2.45rem);
+            letter-spacing: -0.045em;
+        }
+
+        .section-heading p {
+            margin: 10px 0 0;
+            color: #abb4c5;
+            line-height: 1.65;
+        }
+
+        .values {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .value-card,
+        .hero-card {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.045);
+        }
+
+        .value-card {
+            padding: 22px;
+        }
+
+        .value-icon {
+            display: grid;
+            width: 46px;
+            height: 46px;
+            place-items: center;
+            margin-bottom: 18px;
+            border-radius: 13px;
+            background: rgba(242, 184, 75, 0.13);
+            font-size: 1.35rem;
+        }
+
+        .value-card h3 {
+            margin: 0 0 9px;
+            font-size: 1.08rem;
+        }
+
+        .value-card p {
+            margin: 0;
+            color: #abb4c5;
+            line-height: 1.65;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .hero-card {
+            padding: 22px;
+            transition: transform 160ms ease, border-color 160ms ease;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(242, 184, 75, 0.55);
+        }
+
+        .portrait {
+            display: grid;
+            min-height: 155px;
+            place-items: center;
+            margin-bottom: 19px;
+            overflow: hidden;
+            border-radius: 12px;
+            background:
+                radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.17), transparent 42%),
+                linear-gradient(135deg, #283653, #3a2e67);
+            font-size: 4.4rem;
+        }
+
+        .hero-card:nth-child(2) .portrait {
+            background:
+                radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.17), transparent 42%),
+                linear-gradient(135deg, #1c4950, #285174);
+        }
+
+        .hero-card:nth-child(3) .portrait {
+            background:
+                radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.17), transparent 42%),
+                linear-gradient(135deg, #59402e, #744756);
+        }
+
+        .hero-card h3 {
+            margin: 0;
+            font-size: 1.32rem;
+        }
+
+        .hero-title {
+            margin: 5px 0 14px;
+            color: #f2b84b;
+            font-size: 0.86rem;
+            font-weight: 700;
+        }
+
+        .hero-card p {
+            color: #b5bece;
+            line-height: 1.6;
+        }
+
+        .traits {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 17px;
+        }
+
+        .trait {
+            padding: 6px 9px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #d5dae4;
+            font-size: 0.78rem;
+        }
+
+        .cta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px;
+            margin: 42px 0 58px;
+            padding: clamp(24px, 5vw, 40px);
+            border: 1px solid rgba(242, 184, 75, 0.25);
+            border-radius: 18px;
+            background: linear-gradient(115deg, rgba(242, 184, 75, 0.12), rgba(105, 83, 172, 0.12));
+        }
+
+        .cta h2 {
+            margin: 0 0 9px;
+            font-size: 1.55rem;
+        }
+
+        .cta p {
+            max-width: 620px;
+            margin: 0;
+            color: #c3cada;
+            line-height: 1.65;
+        }
+
+        footer {
+            padding: 24px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.09);
+            color: #929caf;
+            font-size: 0.88rem;
+            text-align: center;
+        }
+
+        @media (max-width: 760px) {
+            .values,
+            .hero-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 560px) {
+            .container {
+                width: min(100% - 28px, 1100px);
+            }
+
+            .nav {
+                align-items: flex-start;
+                flex-direction: column;
+                justify-content: center;
+                padding: 13px 0;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-links a {
+                font-size: 0.84rem;
+            }
+
+            .hero {
+                min-height: 370px;
+                padding: 46px 0;
+            }
+
+            .values,
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav">
+            <a class="brand" href="#ana-sayfa"><span class="brand-mark" aria-hidden="true">★</span>Kahraman Akademisi</a>
+            <nav class="nav-links" aria-label="Ana menü">
+                <a href="#degerler">Akademi</a>
+                <a href="#kahramanlar">Kahramanlar</a>
+                <a href="../">Tüm projeler</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" id="ana-sayfa">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <p class="eyebrow">Geleceğin koruyucuları burada yetişiyor</p>
+                <h1>Gücünü iyilik için kullan.</h1>
+                <p class="hero-copy">Kahraman Akademisi'nde özel yetenekler; cesaret, sorumluluk ve ekip çalışmasıyla birleşir. Her öğrenci, yaşadığı topluma fayda sağlamak için kendi yolunu keşfeder.</p>
+                <a class="button" href="#kahramanlar">Öğrencilerle tanış &darr;</a>
+            </div>
+        </section>
+
+        <section class="section" id="degerler" aria-labelledby="values-title">
+            <div class="section-heading">
+                <p class="eyebrow">Akademinin temel taşları</p>
+                <h2 id="values-title">Gerçek kahramanlık karakterle başlar.</h2>
+                <p>Yetenekler farklı olabilir; herkesi bir araya getiren değerler aynıdır.</p>
+            </div>
+            <div class="values">
+                <article class="value-card">
+                    <div class="value-icon" aria-hidden="true">🛡️</div>
+                    <h3>Sorumluluk</h3>
+                    <p>Gücünü dikkatli kullanmak ve yaptığın seçimlerin sonuçlarını üstlenmek.</p>
+                </article>
+                <article class="value-card">
+                    <div class="value-icon" aria-hidden="true">🤝</div>
+                    <h3>Ekip çalışması</h3>
+                    <p>Birbirini dinleyerek ve farklı yetenekleri birleştirerek daha iyisini başarmak.</p>
+                </article>
+                <article class="value-card">
+                    <div class="value-icon" aria-hidden="true">💛</div>
+                    <h3>Empati</h3>
+                    <p>Yardım etmeden önce insanları anlamaya çalışmak ve adil davranmak.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="kahramanlar" aria-labelledby="heroes-title">
+            <div class="section-heading">
+                <p class="eyebrow">Öğrenci dosyaları</p>
+                <h2 id="heroes-title">Her kahramanın farklı bir gücü var.</h2>
+                <p>Akademinin özgün öğrencileriyle tanış: yetenekleri kadar kişilikleri de onları özel kılıyor.</p>
+            </div>
+            <div class="hero-grid">
+                <article class="hero-card">
+                    <div class="portrait" role="img" aria-label="Işık Yolu için yıldız simgesi">🌟</div>
+                    <h3>Işık Yolu</h3>
+                    <p class="hero-title">Enerji uzmanı · 2. sınıf</p>
+                    <p>Avuçlarında ışık küreleri oluşturarak karanlık alanları aydınlatır ve güvenli yön bulma işaretleri yaratır. Gücünü dikkatle ve ölçülü kullanır.</p>
+                    <div class="traits" aria-label="Özellikleri">
+                        <span class="trait">Cesur</span>
+                        <span class="trait">Dikkatli</span>
+                        <span class="trait">Yardımsever</span>
+                    </div>
+                </article>
+
+                <article class="hero-card">
+                    <div class="portrait" role="img" aria-label="Rüzgar için rüzgar simgesi">🌬️</div>
+                    <h3>Rüzgar</h3>
+                    <p class="hero-title">Hava akımı kontrolü · 3. sınıf</p>
+                    <p>Hava akımlarını yönlendirerek hızlı hareket eder ve kurtarma çalışmalarında dumanı dağıtmaya yardımcı olur. Önce plan yapar, sonra harekete geçer.</p>
+                    <div class="traits" aria-label="Özellikleri">
+                        <span class="trait">Çevik</span>
+                        <span class="trait">Planlı</span>
+                        <span class="trait">Soğukkanlı</span>
+                    </div>
+                </article>
+
+                <article class="hero-card">
+                    <div class="portrait" role="img" aria-label="Kaya için dağ simgesi">⛰️</div>
+                    <h3>Kaya</h3>
+                    <p class="hero-title">Dayanıklılık · 1. sınıf</p>
+                    <p>Güçlü ve dayanıklı yapısıyla engelleri kaldırır, güvenli geçiş yolları açar. En büyük gücünün arkadaşlarına destek olmak olduğunu düşünür.</p>
+                    <div class="traits" aria-label="Özellikleri">
+                        <span class="trait">Güvenilir</span>
+                        <span class="trait">Sabırlı</span>
+                        <span class="trait">Takım oyuncusu</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="cta" aria-labelledby="cta-title">
+            <div>
+                <h2 id="cta-title">Kahramanlık bir seçimdir.</h2>
+                <p>Birine yardım etmek, doğruyu savunmak ve birlikte çalışmak için süper güce ihtiyaç yok. Küçük iyilikler de dünyayı değiştirir.</p>
+            </div>
+            <a class="button" href="../">Diğer projelere dön</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">© 2026 Kahraman Akademisi · Cesaret, sorumluluk ve dayanışma.</div>
+    </footer>
+</body>
+</html>

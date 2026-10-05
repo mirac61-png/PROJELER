@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayı Tahmin Oyunu</title>
+    <style>
+        body {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .game-card {
+            background-color: #34495e;
+            border: 2px solid #1abc9c;
+            border-radius: 15px;
+            padding: 30px;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        h1 { color: #1abc9c; margin-top: 0; }
+        input[type="number"] {
+            padding: 10px;
+            width: 80px;
+            border-radius: 5px;
+            border: none;
+            font-size: 1rem;
+            text-align: center;
+        }
+        button {
+            background-color: #e67e22;
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+        button:hover { background-color: #d35400; }
+        #message { margin-top: 20px; font-weight: bold; }
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            color: #1abc9c;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="game-card">
+    <h1>Sayı Tahmin Oyunu</h1>
+    <p>1 ile 100 arasında bir sayı tuttum!</p>
+    <div>
+        <input type="number" id="guessInput" min="1" max="100">
+        <button onclick="checkGuess()">Tahmin Et</button>
+    </div>
+    <div id="message">Tahminini gir ve butona bas.</div>
+    <a href="index.html" class="back-btn">← Oyunlara Dön</a>
+</div>
+
+<script>
+    const targetNumber = Math.floor(Math.random() * 100) + 1;
+    let attempts = 0;
+
+    function checkGuess() {
+        const userGuess = parseInt(document.getElementById('guessInput').value);
+        const message = document.getElementById('message');
+        
+        if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+            message.innerText = "Lütfen 1 ile 100 arasında geçerli bir sayı girin!";
+            return;
+        }
+
+        attempts++;
+
+        if (userGuess === targetNumber) {
+            message.innerText = `Tebrikler! 🎉 Sayıyı ${attempts} denemede buldun!`;
+        } else if (userGuess < targetNumber) {
+            message.innerText = "Daha BÜYÜK bir sayı söyle! ⬆️";
+        } else {
+            message.innerText = "Daha KÜÇÜK bir sayı söyle! ⬇️";
+        }
+    }
+</script>
+
+</body>
+</html>
