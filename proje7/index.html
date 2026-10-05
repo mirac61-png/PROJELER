@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1a0b2e">
+    <meta name="description" content="1980'lerin klasik oyunlarından ilham alan neon temalı retro oyun salonu.">
+    <title>Retro Arcade Salonu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <p class="coin-label"><span aria-hidden="true">●</span> 1 JETON = 1 MACERA</p>
+        <h1 id="logo">ARCADE SALONU</h1>
+        <p class="slogan">Geçmişe dönüş başlıyor. Jeton atın!</p>
+        <a class="back-link" href="../">← PROJE ARŞİVİ</a>
+    </header>
+
+    <main>
+        <section class="intro" aria-labelledby="intro-title">
+            <p class="section-kicker">INSERT COIN TO CONTINUE</p>
+            <h2 id="intro-title">Efsane oyunlar.<br><span>Tek bir salon.</span></h2>
+            <p>Neon ışıkların altında, oyun tarihine damga vuran klasiklere göz at. Bir oyun seç ve nostaljiye dal.</p>
+        </section>
+
+        <section class="oyun-kutuphanesi" id="oyunlar" aria-label="Retro oyun koleksiyonu">
+            <article class="oyun-karti">
+                <img src="gorseller/maze.svg" alt="Neon çizgilerle hazırlanmış labirent illüstrasyonu">
+                <div class="oyun-bilgi">
+                    <span class="oyun-no">ARCADE CLASSIC · 01</span>
+                    <h3>Pac-Man</h3>
+                    <p>Yıl: 1980 <span aria-hidden="true">|</span> Tür: Labirent</p>
+                    <a href="oyun.html?oyun=pacman" class="btn-oyna" aria-label="Pac-Man oyununu oyna">OYNA</a>
+                </div>
+            </article>
+
+            <article class="oyun-karti">
+                <img src="gorseller/blocks.svg" alt="Renkli geometrik bloklardan oluşan bulmaca illüstrasyonu">
+                <div class="oyun-bilgi">
+                    <span class="oyun-no">PUZZLE CLASSIC · 02</span>
+                    <h3>Tetris</h3>
+                    <p>Yıl: 1984 <span aria-hidden="true">|</span> Tür: Bulmaca</p>
+                    <a href="oyun.html?oyun=tetris" class="btn-oyna" aria-label="Tetris oyununu oyna">OYNA</a>
+                </div>
+            </article>
+
+            <article class="oyun-karti">
+                <img src="gorseller/platform.svg" alt="Pikselli gökyüzü ve platformlardan oluşan oyun illüstrasyonu">
+                <div class="oyun-bilgi">
+                    <span class="oyun-no">PLATFORM CLASSIC · 03</span>
+                    <h3>Super Mario</h3>
+                    <p>Yıl: 1985 <span aria-hidden="true">|</span> Tür: Platform</p>
+                    <a href="oyun.html?oyun=platform" class="btn-oyna" aria-label="Platform oyununu oyna">OYNA</a>
+                </div>
+            </article>
+
+            <article class="oyun-karti">
+                <img src="gorseller/space.svg" alt="Yıldızlar ve geometrik uzay gemisiyle hazırlanmış uzay illüstrasyonu">
+                <div class="oyun-bilgi">
+                    <span class="oyun-no">SHOOTER CLASSIC · 04</span>
+                    <h3>Space Invaders</h3>
+                    <p>Yıl: 1978 <span aria-hidden="true">|</span> Tür: Nişancı</p>
+                    <a href="oyun.html?oyun=space" class="btn-oyna" aria-label="Uzay savunma oyununu oyna">OYNA</a>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 1980–2026 <span>RETRO ARCADE SALONU</span> · Tüm jeton hakları saklıdır.</p>
+        <a href="../">Ana proje sayfasına dön</a>
+    </footer>
+</body>
+</html>

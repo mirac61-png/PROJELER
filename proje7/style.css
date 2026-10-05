@@ -1,0 +1,298 @@
+:root {
+    color-scheme: dark;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    color: #fff;
+    background: #1a0b2e;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    --pink: #f20089;
+    --cyan: #00f0ff;
+    --purple: #a393eb;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+    background:
+        radial-gradient(ellipse at 50% 0, rgba(95, 29, 130, 0.34), transparent 33rem),
+        linear-gradient(rgba(26, 11, 46, 0.96), rgba(26, 11, 46, 0.99)),
+        #1a0b2e;
+}
+
+.site-header {
+    position: relative;
+    padding: 34px 20px 30px;
+    border-bottom: 3px solid var(--pink);
+    background: #0b0514;
+    box-shadow: 0 5px 28px rgba(242, 0, 137, 0.25);
+    text-align: center;
+}
+
+.coin-label,
+.section-kicker,
+.oyun-no {
+    color: var(--cyan);
+    font-family: "Press Start 2P", "Courier New", monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+}
+
+.coin-label {
+    margin: 0 0 22px;
+}
+
+.coin-label span {
+    color: var(--pink);
+}
+
+#logo,
+.slogan,
+.intro h2,
+.oyun-bilgi h3,
+.btn-oyna {
+    font-family: "Press Start 2P", "Courier New", monospace;
+}
+
+#logo {
+    margin: 0;
+    color: var(--cyan);
+    font-size: clamp(1.15rem, 4vw, 2rem);
+    line-height: 1.6;
+    text-shadow: 3px 3px 0 var(--pink), -2px -2px 0 rgba(0, 240, 255, 0.35);
+}
+
+.slogan {
+    margin: 14px 0 0;
+    color: var(--pink);
+    font-size: clamp(0.55rem, 1.7vw, 0.72rem);
+    line-height: 1.8;
+}
+
+.back-link {
+    position: absolute;
+    top: 18px;
+    right: max(20px, calc((100vw - 1160px) / 2));
+    color: #b9a8d6;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.back-link:hover,
+.back-link:focus-visible,
+footer a:hover,
+footer a:focus-visible {
+    color: var(--cyan);
+}
+
+main {
+    width: min(1160px, calc(100% - 40px));
+    margin: 0 auto;
+}
+
+.intro {
+    max-width: 670px;
+    margin: 0 auto;
+    padding: 52px 0 10px;
+    text-align: center;
+}
+
+.section-kicker {
+    margin: 0 0 20px;
+    color: var(--pink);
+}
+
+.intro h2 {
+    margin: 0;
+    font-size: clamp(1.15rem, 4vw, 1.8rem);
+    line-height: 1.8;
+}
+
+.intro h2 span {
+    color: var(--cyan);
+    text-shadow: 0 0 18px rgba(0, 240, 255, 0.35);
+}
+
+.intro > p:last-child {
+    max-width: 540px;
+    margin: 15px auto 0;
+    color: #c3b6dc;
+    line-height: 1.75;
+}
+
+.oyun-kutuphanesi {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+    padding: 36px 0 64px;
+}
+
+.oyun-karti {
+    min-width: 0;
+    overflow: hidden;
+    border: 2px solid var(--cyan);
+    border-radius: 12px;
+    background: #2d1b4e;
+    box-shadow: 0 0 0 rgba(0, 240, 255, 0);
+    transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.oyun-karti:hover {
+    transform: translateY(-9px);
+    border-color: var(--pink);
+    box-shadow: 0 15px 32px rgba(0, 240, 255, 0.23);
+}
+
+.oyun-karti img {
+    display: block;
+    width: 100%;
+    height: 190px;
+    border-bottom: 2px solid var(--cyan);
+    object-fit: cover;
+    image-rendering: pixelated;
+    transition: border-color 220ms ease, transform 300ms ease;
+}
+
+.oyun-karti:hover img {
+    transform: scale(1.035);
+    border-color: var(--pink);
+}
+
+.oyun-bilgi {
+    padding: 20px 17px 19px;
+    text-align: center;
+}
+
+.oyun-no {
+    display: block;
+    min-height: 1.7em;
+    color: var(--cyan);
+    font-size: 0.48rem;
+    line-height: 1.7;
+}
+
+.oyun-bilgi h3 {
+    min-height: 2.5em;
+    margin: 15px 0 10px;
+    color: var(--pink);
+    font-size: clamp(0.67rem, 1.2vw, 0.82rem);
+    line-height: 1.8;
+}
+
+.oyun-bilgi p {
+    margin: 0;
+    color: var(--purple);
+    font-size: 0.86rem;
+}
+
+.oyun-bilgi p span {
+    padding: 0 3px;
+    color: var(--pink);
+}
+
+.btn-oyna {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 15px;
+    border: 1px solid var(--cyan);
+    background: var(--cyan);
+    color: #1a0b2e;
+    font-size: 0.58rem;
+    text-decoration: none;
+    transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease;
+}
+
+.btn-oyna:hover,
+.btn-oyna:focus-visible {
+    border-color: var(--pink);
+    background: var(--pink);
+    color: #fff;
+    box-shadow: 0 0 18px rgba(242, 0, 137, 0.45);
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px 28px;
+    flex-wrap: wrap;
+    padding: 22px 20px;
+    border-top: 2px solid var(--cyan);
+    background: #0b0514;
+    color: #8e80ad;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer span {
+    color: var(--pink);
+}
+
+footer a {
+    color: var(--cyan);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+@media (max-width: 900px) {
+    .oyun-kutuphanesi {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .oyun-karti img {
+        height: 220px;
+    }
+}
+
+@media (max-width: 560px) {
+    .site-header {
+        padding-top: 56px;
+    }
+
+    .back-link {
+        top: 18px;
+        right: 16px;
+    }
+
+    main {
+        width: min(100% - 28px, 1160px);
+    }
+
+    .intro {
+        padding-top: 42px;
+    }
+
+    .oyun-kutuphanesi {
+        grid-template-columns: 1fr;
+        max-width: 390px;
+        margin: 0 auto;
+        padding-top: 28px;
+    }
+
+    .oyun-karti img {
+        height: 215px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}

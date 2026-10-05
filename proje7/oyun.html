@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1a0b2e">
+    <title>Retro Arcade — Oyun</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .game-main {
+            width: min(920px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 35px 0 55px;
+        }
+
+        .game-heading {
+            text-align: center;
+        }
+
+        .game-heading h2 {
+            margin: 0;
+            color: var(--cyan);
+            font-family: "Press Start 2P", "Courier New", monospace;
+            font-size: clamp(1rem, 4vw, 1.55rem);
+            line-height: 1.7;
+            text-shadow: 2px 2px var(--pink);
+        }
+
+        .game-heading p {
+            color: #c3b6dc;
+            line-height: 1.6;
+        }
+
+        .game-shell {
+            margin-top: 22px;
+            padding: 16px;
+            border: 2px solid var(--cyan);
+            border-radius: 13px;
+            background: #0b0514;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.12);
+        }
+
+        .game-hud {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: var(--cyan);
+            font-family: "Press Start 2P", "Courier New", monospace;
+            font-size: 0.64rem;
+        }
+
+        .game-hud span {
+            display: block;
+        }
+
+        .game-hud .best-score {
+            color: #ffe47a;
+            text-align: right;
+        }
+
+        #game-status {
+            color: var(--pink);
+            text-align: right;
+        }
+
+        .hud-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 22px;
+        }
+
+        #game-canvas {
+            display: block;
+            width: 100%;
+            max-height: 68vh;
+            margin-inline: auto;
+            border: 1px solid rgba(0, 240, 255, 0.45);
+            background: #100a20;
+            image-rendering: pixelated;
+            touch-action: none;
+        }
+
+        .game-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .game-controls button,
+        .restart-button {
+            min-width: 54px;
+            min-height: 46px;
+            padding: 9px 14px;
+            border: 1px solid var(--cyan);
+            border-radius: 8px;
+            background: #211638;
+            color: var(--cyan);
+            font: inherit;
+            font-weight: 800;
+            cursor: pointer;
+            touch-action: none;
+            user-select: none;
+            transition: transform 100ms ease, border-color 160ms ease, background 160ms ease;
+        }
+
+        .game-controls button:active,
+        .restart-button:active {
+            transform: translateY(1px) scale(0.97);
+        }
+
+        .game-controls button:hover,
+        .game-controls button:focus-visible,
+        .restart-button:hover,
+        .restart-button:focus-visible {
+            border-color: var(--pink);
+            background: #3b1541;
+            color: #fff;
+            outline: none;
+        }
+
+        .game-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .game-actions button {
+            min-height: 42px;
+            padding: 9px 13px;
+            border: 1px solid rgba(163, 147, 235, 0.6);
+            border-radius: 8px;
+            background: #211638;
+            color: #ded4f1;
+            font: inherit;
+            font-size: 0.82rem;
+            font-weight: 750;
+            cursor: pointer;
+        }
+
+        .game-actions button:hover,
+        .game-actions button:focus-visible {
+            border-color: var(--cyan);
+            color: var(--cyan);
+            outline: none;
+        }
+
+        .restart-button {
+            border-color: var(--pink);
+            color: #ff75c6;
+        }
+
+        .tetris-extras {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 22px;
+            margin-top: 15px;
+            color: #c3b6dc;
+            font-family: "Press Start 2P", "Courier New", monospace;
+            font-size: 0.55rem;
+            text-align: center;
+        }
+
+        .tetris-extras[hidden] {
+            display: none;
+        }
+
+        #next-piece {
+            width: 96px;
+            height: 64px;
+            border: 1px solid rgba(0, 240, 255, 0.4);
+            background: #100a20;
+            image-rendering: pixelated;
+        }
+
+        .game-help {
+            margin: 18px 0 0;
+            color: #b8a9d2;
+            font-size: 0.9rem;
+            line-height: 1.65;
+            text-align: center;
+        }
+
+        .back-to-arcade {
+            display: block;
+            width: fit-content;
+            margin: 24px auto 0;
+            color: var(--cyan);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .back-to-arcade:hover,
+        .back-to-arcade:focus-visible {
+            color: var(--pink);
+        }
+
+        @media (max-width: 560px) {
+            .game-main {
+                padding-top: 25px;
+            }
+
+            .game-shell {
+                padding: 10px;
+            }
+
+            .game-hud {
+                font-size: 0.52rem;
+            }
+        }
+
+        @media (max-width: 390px) {
+            .game-hud {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            #game-status {
+                text-align: left;
+            }
+
+            .hud-group {
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .game-actions {
+                gap: 8px;
+            }
+
+            .game-actions button {
+                padding-inline: 10px;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+    <script src="oyun.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <p class="coin-label"><span aria-hidden="true">●</span> ARCADE OYUNU</p>
+        <h1 id="logo">OYUN ZAMANI</h1>
+        <a class="back-link" href="index.html">← OYUN SALONU</a>
+    </header>
+
+    <main class="game-main">
+        <section class="game-heading">
+            <p class="section-kicker">JETONUNU KULLAN</p>
+            <h2 id="game-title">Yükleniyor</h2>
+            <p id="game-description"></p>
+        </section>
+
+        <section class="game-shell" aria-label="Oyun alanı">
+            <div class="game-hud">
+                <div class="hud-group">
+                    <span id="game-score">SKOR: 0</span>
+                    <span class="best-score" id="best-score">REKOR: 0</span>
+                </div>
+                <span id="game-status" aria-live="polite">HAZIR</span>
+            </div>
+            <canvas id="game-canvas" aria-label="Oyun alanı"></canvas>
+            <div class="tetris-extras" id="tetris-extras" hidden>
+                <span>SIRADAKİ<br><canvas id="next-piece" width="96" height="64" aria-label="Sıradaki Tetris bloğu"></canvas></span>
+                <span id="tetris-level">SEVİYE 1<br>0 SATIR</span>
+            </div>
+            <div class="game-controls" id="touch-controls" aria-label="Dokunmatik oyun kontrolleri"></div>
+            <div class="game-actions">
+                <button id="pause-button" type="button" aria-pressed="false">DURAKLAT</button>
+                <button id="sound-button" type="button" aria-pressed="false">SES: KAPALI</button>
+                <button class="restart-button" id="restart-button" type="button">YENİDEN BAŞLAT</button>
+            </div>
+        </section>
+
+        <p class="game-help" id="game-help"></p>
+        <a class="back-to-arcade" href="index.html">← Diğer oyunlara dön</a>
+    </main>
+</body>
+</html>
