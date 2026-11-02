@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore | Sepetim ve Ödeme</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <h1 class="logo">⚡ Tech<span>Store</span></h1>
+            <nav class="nav-menu">
+                <a href="index.html">← Mağazaya Dön</a>
+                <a href="sepet.html" class="aktif sepet-buton">🛒 Sepetim (<span id="sepetSayaci">0</span>)</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="sepet-container">
+        <h2>🛒 Alışveriş Sepetiniz</h2>
+        
+        <div class="sepet-layout">
+            <div class="tablo-wrapper">
+                <table class="sepet-tablo">
+                    <thead>
+                        <tr>
+                            <th>Görsel</th>
+                            <th>Ürün Adı</th>
+                            <th>Birim Fiyat</th>
+                            <th>Adet</th>
+                            <th>Toplam</th>
+                            <th>İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sepetTabloGovdesi"></tbody>
+                </table>
+                <div style="margin-top: 15px;">
+                    <button onclick="sepetiBosalt()" class="temizle-btn">🗑️ Sepeti Tamamen Boşalt</button>
+                </div>
+            </div>
+
+            <div class="siparis-ozet-karti">
+                <h3>Sipariş Özeti</h3>
+                <div class="ozet-satir">
+                    <span>Ara Toplam:</span>
+                    <span id="araToplamAlani">0.00 TL</span>
+                </div>
+                <div class="ozet-satir">
+                    <span>Kargo Ücreti (5.000 TL+ Ücretsiz):</span>
+                    <span id="kargoTutarAlani">49.90 TL</span>
+                </div>
+                <hr style="margin: 15px 0; border:0; border-top:1px solid #e5e7eb;">
+                <div class="ozet-satir genel-toplam">
+                    <span>Genel Toplam:</span>
+                    <span id="toplamTutarAlani">0.00 TL</span>
+                </div>
+
+                <form onsubmit="siparisiTamamla(event)" class="odeme-formu">
+                    <div class="form-grup">
+                        <label for="musteriAd">Ad Soyad / Alıcı:</label>
+                        <input type="text" id="musteriAd" required placeholder="Adınızı giriniz...">
+                    </div>
+                    <div class="form-grup">
+                        <label for="musteriAdres">Teslimat Adresi:</label>
+                        <input type="text" id="musteriAdres" required placeholder="Mahalle, Sokak, No, İl/İlçe">
+                    </div>
+                    <button type="submit" class="satin-al-btn">Siparişi Güvenle Tamamla 🚀</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <audio id="sepetSesi" src="https://assets.mixkit.co/active_storage/sfx/2003/2003-preview.mp3"></audio>
+
+    <script src="app.js"></script>
+</body>
+</html>

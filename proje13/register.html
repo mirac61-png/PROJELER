@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore | Kayıt Ol</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-body">
+
+    <div class="auth-kutu">
+        <div class="auth-header">
+            <h1 class="logo">⚡ Tech<span>Store</span></h1>
+            <h2>Hesap Oluştur</h2>
+            <p>Aramıza katılın ve fırsatlardan hemen yararlanın.</p>
+        </div>
+
+        <form onsubmit="kayitOlSayfa(event)" class="auth-form">
+            <div class="form-grup">
+                <label for="regAd">Ad Soyad</label>
+                <input type="text" id="regAd" required placeholder="Ahmet Yılmaz">
+            </div>
+
+            <div class="form-grup">
+                <label for="regEmail">E-Posta Adresi</label>
+                <input type="email" id="regEmail" required placeholder="ornek@mail.com">
+            </div>
+
+            <div class="form-grup">
+                <label for="regSifre">Şifre</label>
+                <input type="password" id="regSifre" required placeholder="••••••••">
+            </div>
+
+            <button type="submit" class="auth-submit-btn" style="background: var(--primary);">Kayıt Ol ve Katıl ✨</button>
+        </form>
+
+        <div class="auth-footer">
+            <p>Zaten hesabınız var mı? <a href="login.html">Giriş Yapın</a></p>
+            <p><a href="index.html">← Mağazaya Dön</a></p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

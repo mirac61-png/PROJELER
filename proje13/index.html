@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore | Teknoloji Mağazası</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <h1 class="logo">⚡ Tech<span>Store</span></h1>
+            
+            <div class="arama-kapsayici">
+                <input type="text" id="aramaInput" placeholder="Mağazada ürün, marka veya model arayın...">
+            </div>
+
+            <nav class="nav-menu">
+                <a href="index.html" class="aktif">Vitrin</a>
+                <a href="#">❤️ Favoriler (<span id="favoriSayaci">0</span>)</a>
+                <a href="sepet.html" class="sepet-buton">🛒 Sepetim (<span id="sepetSayaci">0</span>)</a>
+                
+                <div id="kullaniciAlani">
+                    <a href="login.html" class="giris-link-btn">Giriş Yap</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="kontrol-bar">
+        <div class="kategori-bar">
+            <button class="kat-btn aktif" data-kategori="hepsi">✨ Tüm Ürünler</button>
+            <button class="kat-btn" data-kategori="laptops">💻 Laptoplar</button>
+            <button class="kat-btn" data-kategori="smartphones">📱 Akıllı Telefonlar</button>
+            <button class="kat-btn" data-kategori="tablets">📟 Tabletler</button>
+            <button class="kat-btn" data-kategori="mobile-accessories">🎧 Aksesuarlar</button>
+        </div>
+
+        <div class="siralama-kapsayici">
+            <select id="siralamaSelect" class="siralama-select">
+                <option value="varsayilan">Sıralama: Önerilen</option>
+                <option value="fiyat-artan">Fiyat: Düşükten Yükseğe</option>
+                <option value="fiyat-azalan">Fiyat: Yüksekten Düşüğe</option>
+                <option value="puan-azalan">En Çok Değerlendirilenler ⭐</option>
+            </select>
+        </div>
+    </section>
+
+    <main id="urun-vitrini" class="urun-grid"></main>
+
+    <div id="detayModal" class="modal">
+        <div class="modal-icerik detay-modal-genis">
+            <span class="kapat-btn" onclick="modalKapat('detayModal')">&times;</span>
+            <div id="detayIcerikAlani" class="detay-esnek"></div>
+        </div>
+    </div>
+
+    <audio id="sepetSesi" src="https://assets.mixkit.co/active_storage/sfx/2003/2003-preview.mp3"></audio>
+
+    <script src="app.js"></script>
+</body>
+</html>

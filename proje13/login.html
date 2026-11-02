@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore | Giriş Yap</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-body">
+
+    <div class="auth-kutu">
+        <div class="auth-header">
+            <h1 class="logo">⚡ Tech<span>Store</span></h1>
+            <h2>Tekrar Hoş Geldiniz</h2>
+            <p>Hesabınıza erişmek için bilgilerinizi giriniz.</p>
+        </div>
+
+        <form onsubmit="girisYapSayfa(event)" class="auth-form">
+            <div class="form-grup">
+                <label for="loginEmail">E-Posta Adresi</label>
+                <input type="email" id="loginEmail" required placeholder="ornek@mail.com">
+            </div>
+
+            <div class="form-grup">
+                <label for="loginSifre">Şifre</label>
+                <input type="password" id="loginSifre" required placeholder="••••••••">
+            </div>
+
+            <button type="submit" class="auth-submit-btn">Giriş Yap 🚀</button>
+        </form>
+
+        <div class="auth-footer">
+            <p>Hesabınız yok mu? <a href="register.html">Hemen Kayıt Olun</a></p>
+            <p><a href="index.html">← Mağazaya Dön</a></p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
