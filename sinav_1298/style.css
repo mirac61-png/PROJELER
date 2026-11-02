@@ -1,0 +1,14 @@
+.yemek-karti {
+    transition: all 0.3s ease;
+}
+
+/* GÖREV 3: -10px yukarı kalkma ve #ff9900 kenarlık rengi eklendi */
+.yemek-karti:hover {
+    transform: translateY(-10px);
+    border-color: #ff9900;
+}
+
+.yemek-karti img {
+    height: 200px;
+    object-fit: cover;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tepsim ve Ödeme | SiberKantin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-dark text-light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-success">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-success fs-3" href="index.html">
+                <i class="fa-solid fa-utensils"></i> SİBER<span class="text-white">KANTİN</span>
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="index.html"><i class="fa-solid fa-arrow-left"></i> Menüye Dön</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <div class="row g-4">
+            <!-- SOL SÜTUN: SİPARİŞ TABLOSU -->
+            <div class="col-lg-8">
+                <h3 class="text-success mb-3">Tepsimdeki Yemekler</h3>
+                <table class="table table-dark table-striped table-hover table-bordered align-middle text-center">
+                    <thead class="table-success text-dark">
+                        <tr>
+                            <th>Görsel</th>
+                            <th>Yemek Adı</th>
+                            <th>Kalori</th>
+                            <!-- GÖREV 8.A: Hazırlanma Süresi başlığı eklendi -->
+                            <th>Hazırlanma Süresi</th>
+                            <th>Fiyat</th>
+                            <th>Sil</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tepsiTabloGovdesi">
+                        <!-- JS ile doldurulacak -->
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2" class="text-end fw-bold">TOPLAM:</td>
+                            <td id="toplamKalori" class="fw-bold text-warning">0 kcal</td>
+                            <td></td>
+                            <td colspan="2" id="toplamFiyat" class="fw-bold text-success fs-4">0 TL</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <!-- SAĞ SÜTUN: KAMPÜS KART ÖDEME FORMU -->
+            <div class="col-lg-4">
+                <div class="card bg-black text-light border-success p-3">
+                    <h4 class="text-success mb-3">Sipariş Onayı</h4>
+                    
+                    <div class="input-group mb-3">
+                        <input type="text" id="kuponInput" class="form-control bg-dark text-light" placeholder="İndirim Kodu Girin">
+                        <button onclick="indirimYap()" class="btn btn-outline-success">Uygula</button>
+                    </div>
+                    <div id="indirimMesaj"></div>
+
+                    <form onsubmit="siparisVer(event)">
+                        <div class="mb-3">
+                            <label class="form-label">Öğrenci Ad Soyad:</label>
+                            <input type="text" id="ogrenciAd" class="form-control bg-dark text-light" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">4 Haneli Kampüs Kart Şifresi:</label>
+                            <!-- GÖREV 9: required ve pattern eklendi -->
+                            <input type="password" id="kartSifre" class="form-control bg-dark text-light" placeholder="1234" required pattern="[0-9]{4}">
+                        </div>
+                        <button type="submit" class="btn btn-success w-100 fw-bold">SİPARİŞİ TAMAMLA</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
